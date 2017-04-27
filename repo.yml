@@ -1,0 +1,12 @@
+apiVersion: "git.k8s.com/v1"
+kind: RePo
+metadata:
+  name: pybean-repo
+repo: github.com/jonathan-kosgei/pybean
+oauth: 123456789
+branch: master
+key: jonathan-git-deploy-key
+path: /path/in/volume
+image: image to run job in
+then: hugo --destination=/home/user/hugosite/public
+pvc: persistent-volume-claim

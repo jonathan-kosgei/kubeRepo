@@ -1,0 +1,7 @@
+apiVersion: extensions/v1beta1
+kind: ThirdPartyResource
+metadata:
+  name: re-po.git.k8s.com
+description: "A specification of a Repo resource mapped to a volume"
+versions:
+- name: v1
