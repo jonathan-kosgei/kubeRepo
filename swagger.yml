@@ -1,0 +1,78 @@
+swagger: "2.0"
+
+info:
+  version: 1.0.0
+  title: Simple API
+  description: A simple API to learn how to write OpenAPI Specification
+
+schemes:
+  - https
+host: kubernetes.default.svc
+basePath: /apis/git.k8s.com/v1
+
+paths:
+  /repos:
+    get:
+      summary: Gets Repos
+      description: Returns a list of repos
+      responses:
+        200:
+          description: A list of repos
+          schema:
+            $ref: "#/definitions/repos"
+  /namespaces/{namespace}/repos/{repoName}:
+    get:
+      summary: Gets a Repo in a Namespace
+      description: Returns a specific repo in a namespace
+      parameters:
+        - name: namespace
+          in: path
+          required: true
+          description: The Repo's namespace
+          type: string
+        - name: repoName
+          in: path
+          required: true
+          description: The Repo's name
+          type: string
+      responses:
+        200:
+          description: A single repo
+          schema:
+            $ref: "#/definitions/repo"
+definitions:
+  repos:
+    properties:
+      items:
+        type: array
+        items:
+          $ref: "#/definitions/repo"
+  repo:
+    type: object
+    properties:
+      selfLink:
+        type: string      
+      branch:
+        type: string
+      image:
+        type: string
+      key:
+        type: string
+      oauth:
+        type: string
+      path:
+        type: string
+      repo:
+        type: string
+      then:
+        type: string
+      pvc:
+        type: string
+      metadata:
+          $ref: "#/definitions/metadata"
+  metadata:
+    properties:
+      name:
+        type: string
+      namespace:
+        type: string
