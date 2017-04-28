@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **namespaces_namespace_repos_name_get**
-> Repo namespaces_namespace_repos_name_get(namespace, name, watch=watch)
+> Repo namespaces_namespace_repos_name_get(namespace, name)
 
 Gets a specific Repo
 
@@ -28,11 +28,10 @@ from pprint import pprint
 api_instance = swagger_client.DefaultApi()
 namespace = 'namespace_example' # str | The Repo's namespace
 name = 'name_example' # str | The Repo's name
-watch = true # bool | Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. (optional)
 
 try: 
     # Gets a specific Repo
-    api_response = api_instance.namespaces_namespace_repos_name_get(namespace, name, watch=watch)
+    api_response = api_instance.namespaces_namespace_repos_name_get(namespace, name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->namespaces_namespace_repos_name_get: %s\n" % e)
@@ -44,7 +43,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **namespace** | **str**| The Repo&#39;s namespace | 
  **name** | **str**| The Repo&#39;s name | 
- **watch** | **bool**| Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. | [optional] 
 
 ### Return type
 
@@ -62,7 +60,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **repos_get**
-> Repos repos_get()
+> Repos repos_get(watch=watch)
 
 Gets Repos
 
@@ -78,17 +76,21 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.DefaultApi()
+watch = true # bool | Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. (optional)
 
 try: 
     # Gets Repos
-    api_response = api_instance.repos_get()
+    api_response = api_instance.repos_get(watch=watch)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->repos_get: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **watch** | **bool**| Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. | [optional] 
 
 ### Return type
 

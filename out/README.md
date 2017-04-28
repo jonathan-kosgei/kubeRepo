@@ -54,11 +54,10 @@ from pprint import pprint
 api_instance = swagger_client.DefaultApi()
 namespace = 'namespace_example' # str | The Repo's namespace
 name = 'name_example' # str | The Repo's name
-watch = true # bool | Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. (optional)
 
 try:
     # Gets a specific Repo
-    api_response = api_instance.namespaces_namespace_repos_name_get(namespace, name, watch=watch)
+    api_response = api_instance.namespaces_namespace_repos_name_get(namespace, name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->namespaces_namespace_repos_name_get: %s\n" % e)

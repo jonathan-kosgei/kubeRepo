@@ -56,7 +56,6 @@ class DefaultApi(object):
             for asynchronous request. (optional)
         :param str namespace: The Repo's namespace (required)
         :param str name: The Repo's name (required)
-        :param bool watch: Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
         :return: Repo
                  If the method is called asynchronously,
                  returns the request thread.
@@ -84,13 +83,12 @@ class DefaultApi(object):
             for asynchronous request. (optional)
         :param str namespace: The Repo's namespace (required)
         :param str name: The Repo's name (required)
-        :param bool watch: Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
         :return: Repo
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['namespace', 'name', 'watch']
+        all_params = ['namespace', 'name']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -122,8 +120,6 @@ class DefaultApi(object):
             path_params['name'] = params['name']
 
         query_params = {}
-        if 'watch' in params:
-            query_params['watch'] = params['watch']
 
         header_params = {}
 
@@ -163,6 +159,7 @@ class DefaultApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
+        :param bool watch: Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
         :return: Repos
                  If the method is called asynchronously,
                  returns the request thread.
@@ -188,12 +185,13 @@ class DefaultApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
+        :param bool watch: Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
         :return: Repos
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []
+        all_params = ['watch']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -209,11 +207,14 @@ class DefaultApi(object):
             params[key] = val
         del params['kwargs']
 
+
         collection_formats = {}
 
         path_params = {}
 
         query_params = {}
+        if 'watch' in params:
+            query_params['watch'] = params['watch']
 
         header_params = {}
 
