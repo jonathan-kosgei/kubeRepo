@@ -20,6 +20,13 @@ paths:
           description: A list of repos
           schema:
             $ref: "#/definitions/repos"
+      parameters:
+        - name: watch
+          uniqueItems: true
+          type: boolean
+          description: Watch for changes to the described resources and return them as a stream
+            of add, update, and remove notifications. Specify resourceVersion.
+          in: query
   /watch/repos:
     get:
       summary: Watch Repos
@@ -44,28 +51,22 @@ paths:
           required: true
           description: The Repo's name
           type: string
-        - name: watch
-          uniqueItems: true
-          type: boolean
-          description: Watch for changes to the described resources and return them as a stream
-            of add, update, and remove notifications. Specify resourceVersion.
-          in: query
       responses:
         200:
           description: A single repo
           schema:
             $ref: "#/definitions/repo"
 definitions:
-  repos:
+  event:
     properties:
       type:
         type: string
       object:
-        type: string
-  event:
+        $ref: "#/definitions/repo"
+  repos:
     properties:
       items:
-        type: object
+        type: array
         items:
           $ref: "#/definitions/repo"
   repo:

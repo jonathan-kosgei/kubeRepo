@@ -1,4 +1,4 @@
-# swagger_client.DefaultApi
+# kube_repo.DefaultApi
 
 All URIs are relative to *https://kubernetes.default.svc/apis/git.k8s.com/v1*
 
@@ -20,12 +20,12 @@ Returns a specific repo in a namespace
 ```python
 from __future__ import print_statement
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import kube_repo
+from kube_repo.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi()
+api_instance = kube_repo.DefaultApi()
 namespace = 'namespace_example' # str | The Repo's namespace
 name = 'name_example' # str | The Repo's name
 
@@ -70,12 +70,12 @@ Returns a list of repos
 ```python
 from __future__ import print_statement
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import kube_repo
+from kube_repo.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi()
+api_instance = kube_repo.DefaultApi()
 watch = true # bool | Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. (optional)
 
 try: 
@@ -118,12 +118,12 @@ Listen to events about repos
 ```python
 from __future__ import print_statement
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import kube_repo
+from kube_repo.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi()
+api_instance = kube_repo.DefaultApi()
 
 try: 
     # Watch Repos

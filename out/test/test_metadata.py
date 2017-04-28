@@ -17,9 +17,9 @@ import os
 import sys
 import unittest
 
-import swagger_client
-from swagger_client.rest import ApiException
-from swagger_client.models.metadata import Metadata
+import kube_repo
+from kube_repo.rest import ApiException
+from kube_repo.models.metadata import Metadata
 
 
 class TestMetadata(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestMetadata(unittest.TestCase):
         """
         Test Metadata
         """
-        model = swagger_client.models.metadata.Metadata()
+        model = kube_repo.models.metadata.Metadata()
 
 
 if __name__ == '__main__':

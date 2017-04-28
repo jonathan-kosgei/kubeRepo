@@ -17,9 +17,9 @@ import os
 import sys
 import unittest
 
-import swagger_client
-from swagger_client.rest import ApiException
-from swagger_client.models.repos import Repos
+import kube_repo
+from kube_repo.rest import ApiException
+from kube_repo.models.repos import Repos
 
 
 class TestRepos(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestRepos(unittest.TestCase):
         """
         Test Repos
         """
-        model = swagger_client.models.repos.Repos()
+        model = kube_repo.models.repos.Repos()
 
 
 if __name__ == '__main__':

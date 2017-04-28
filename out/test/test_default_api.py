@@ -17,16 +17,16 @@ import os
 import sys
 import unittest
 
-import swagger_client
-from swagger_client.rest import ApiException
-from swagger_client.apis.default_api import DefaultApi
+import kube_repo
+from kube_repo.rest import ApiException
+from kube_repo.apis.default_api import DefaultApi
 
 
 class TestDefaultApi(unittest.TestCase):
     """ DefaultApi unit test stubs """
 
     def setUp(self):
-        self.api = swagger_client.apis.default_api.DefaultApi()
+        self.api = kube_repo.apis.default_api.DefaultApi()
 
     def tearDown(self):
         pass

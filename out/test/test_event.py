@@ -17,9 +17,9 @@ import os
 import sys
 import unittest
 
-import swagger_client
-from swagger_client.rest import ApiException
-from swagger_client.models.event import Event
+import kube_repo
+from kube_repo.rest import ApiException
+from kube_repo.models.event import Event
 
 
 class TestEvent(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestEvent(unittest.TestCase):
         """
         Test Event
         """
-        model = swagger_client.models.event.Event()
+        model = kube_repo.models.event.Event()
 
 
 if __name__ == '__main__':
