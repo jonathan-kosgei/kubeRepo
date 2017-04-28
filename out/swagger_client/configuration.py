@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Simple API
+    kubeRepo
 
-    A simple API to learn how to write OpenAPI Specification
+    Manage Repos from k8s
 
     OpenAPI spec version: 1.0.0
     
@@ -85,6 +85,9 @@ class Configuration(object):
         self.cert_file = None
         # client key file
         self.key_file = None
+
+        # Proxy URL
+        self.proxy = None
 
     @property
     def logger_file(self):

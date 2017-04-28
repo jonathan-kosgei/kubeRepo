@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Simple API
+    kubeRepo
 
-    A simple API to learn how to write OpenAPI Specification
+    Manage Repos from k8s
 
     OpenAPI spec version: 1.0.0
     
@@ -56,16 +56,40 @@ class Repo(object):
             'metadata': 'metadata'
         }
 
-        self._self_link = self_link
-        self._branch = branch
-        self._image = image
-        self._key = key
-        self._oauth = oauth
-        self._path = path
-        self._repo = repo
-        self._then = then
-        self._pvc = pvc
-        self._metadata = metadata
+        self._self_link = None
+        self._branch = None
+        self._image = None
+        self._key = None
+        self._oauth = None
+        self._path = None
+        self._repo = None
+        self._then = None
+        self._pvc = None
+        self._metadata = None
+
+        # TODO: let required properties as mandatory parameter in the constructor.
+        #       - to check if required property is not None (e.g. by calling setter)
+        #       - ApiClient.__deserialize_model has to be adapted as well
+        if self_link is not None:
+          self.self_link = self_link
+        if branch is not None:
+          self.branch = branch
+        if image is not None:
+          self.image = image
+        if key is not None:
+          self.key = key
+        if oauth is not None:
+          self.oauth = oauth
+        if path is not None:
+          self.path = path
+        if repo is not None:
+          self.repo = repo
+        if then is not None:
+          self.then = then
+        if pvc is not None:
+          self.pvc = pvc
+        if metadata is not None:
+          self.metadata = metadata
 
     @property
     def self_link(self):

@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Simple API
+    kubeRepo
 
-    A simple API to learn how to write OpenAPI Specification
+    Manage Repos from k8s
 
     OpenAPI spec version: 1.0.0
     
@@ -40,9 +40,9 @@ class DefaultApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def namespaces_namespace_repos_repo_name_get(self, namespace, repo_name, **kwargs):
+    def namespaces_namespace_repos_name_get(self, namespace, name, **kwargs):
         """
-        Gets a Repo in a Namespace
+        Gets a specific Repo
         Returns a specific repo in a namespace
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
@@ -50,26 +50,27 @@ class DefaultApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.namespaces_namespace_repos_repo_name_get(namespace, repo_name, callback=callback_function)
+        >>> thread = api.namespaces_namespace_repos_name_get(namespace, name, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str namespace: The Repo's namespace (required)
-        :param str repo_name: The Repo's name (required)
+        :param str name: The Repo's name (required)
+        :param bool watch: Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
         :return: Repo
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.namespaces_namespace_repos_repo_name_get_with_http_info(namespace, repo_name, **kwargs)
+            return self.namespaces_namespace_repos_name_get_with_http_info(namespace, name, **kwargs)
         else:
-            (data) = self.namespaces_namespace_repos_repo_name_get_with_http_info(namespace, repo_name, **kwargs)
+            (data) = self.namespaces_namespace_repos_name_get_with_http_info(namespace, name, **kwargs)
             return data
 
-    def namespaces_namespace_repos_repo_name_get_with_http_info(self, namespace, repo_name, **kwargs):
+    def namespaces_namespace_repos_name_get_with_http_info(self, namespace, name, **kwargs):
         """
-        Gets a Repo in a Namespace
+        Gets a specific Repo
         Returns a specific repo in a namespace
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
@@ -77,18 +78,19 @@ class DefaultApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.namespaces_namespace_repos_repo_name_get_with_http_info(namespace, repo_name, callback=callback_function)
+        >>> thread = api.namespaces_namespace_repos_name_get_with_http_info(namespace, name, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str namespace: The Repo's namespace (required)
-        :param str repo_name: The Repo's name (required)
+        :param str name: The Repo's name (required)
+        :param bool watch: Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
         :return: Repo
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['namespace', 'repo_name']
+        all_params = ['namespace', 'name', 'watch']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -99,28 +101,29 @@ class DefaultApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method namespaces_namespace_repos_repo_name_get" % key
+                    " to method namespaces_namespace_repos_name_get" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'namespace' is set
         if ('namespace' not in params) or (params['namespace'] is None):
-            raise ValueError("Missing the required parameter `namespace` when calling `namespaces_namespace_repos_repo_name_get`")
-        # verify the required parameter 'repo_name' is set
-        if ('repo_name' not in params) or (params['repo_name'] is None):
-            raise ValueError("Missing the required parameter `repo_name` when calling `namespaces_namespace_repos_repo_name_get`")
+            raise ValueError("Missing the required parameter `namespace` when calling `namespaces_namespace_repos_name_get`")
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `namespaces_namespace_repos_name_get`")
 
 
         collection_formats = {}
 
-        resource_path = '/namespaces/{namespace}/repos/{repoName}'.replace('{format}', 'json')
         path_params = {}
         if 'namespace' in params:
             path_params['namespace'] = params['namespace']
-        if 'repo_name' in params:
-            path_params['repoName'] = params['repo_name']
+        if 'name' in params:
+            path_params['name'] = params['name']
 
         query_params = {}
+        if 'watch' in params:
+            query_params['watch'] = params['watch']
 
         header_params = {}
 
@@ -131,7 +134,7 @@ class DefaultApi(object):
         # Authentication setting
         auth_settings = []
 
-        return self.api_client.call_api(resource_path, 'GET',
+        return self.api_client.call_api('/namespaces/{namespace}/repos/{name}', 'GET',
                                         path_params,
                                         query_params,
                                         header_params,
@@ -208,7 +211,6 @@ class DefaultApi(object):
 
         collection_formats = {}
 
-        resource_path = '/repos'.replace('{format}', 'json')
         path_params = {}
 
         query_params = {}
@@ -222,7 +224,7 @@ class DefaultApi(object):
         # Authentication setting
         auth_settings = []
 
-        return self.api_client.call_api(resource_path, 'GET',
+        return self.api_client.call_api('/repos', 'GET',
                                         path_params,
                                         query_params,
                                         header_params,
@@ -230,6 +232,96 @@ class DefaultApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='Repos',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def watch_repos_get(self, **kwargs):
+        """
+        Watch Repos
+        Listen to events about repos
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.watch_repos_get(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :return: Event
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.watch_repos_get_with_http_info(**kwargs)
+        else:
+            (data) = self.watch_repos_get_with_http_info(**kwargs)
+            return data
+
+    def watch_repos_get_with_http_info(self, **kwargs):
+        """
+        Watch Repos
+        Listen to events about repos
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.watch_repos_get_with_http_info(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :return: Event
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method watch_repos_get" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/watch/repos', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='Event',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),

@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Simple API
+    kubeRepo
 
-    A simple API to learn how to write OpenAPI Specification
+    Manage Repos from k8s
 
     OpenAPI spec version: 1.0.0
     
@@ -14,6 +14,7 @@
 from __future__ import absolute_import
 
 # import models into model package
+from .event import Event
 from .metadata import Metadata
 from .repo import Repo
 from .repos import Repos

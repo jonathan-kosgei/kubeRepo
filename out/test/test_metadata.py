@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Simple API
+    kubeRepo
 
-    A simple API to learn how to write OpenAPI Specification
+    Manage Repos from k8s
 
     OpenAPI spec version: 1.0.0
     
@@ -19,11 +19,11 @@ import unittest
 
 import swagger_client
 from swagger_client.rest import ApiException
-from swagger_client.models.repos import Repos
+from swagger_client.models.metadata import Metadata
 
 
-class TestRepos(unittest.TestCase):
-    """ Repos unit test stubs """
+class TestMetadata(unittest.TestCase):
+    """ Metadata unit test stubs """
 
     def setUp(self):
         pass
@@ -31,11 +31,11 @@ class TestRepos(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testRepos(self):
+    def testMetadata(self):
         """
-        Test Repos
+        Test Metadata
         """
-        model = swagger_client.models.repos.Repos()
+        model = swagger_client.models.metadata.Metadata()
 
 
 if __name__ == '__main__':

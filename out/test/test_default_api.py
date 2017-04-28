@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Simple API
+    kubeRepo
 
-    A simple API to learn how to write OpenAPI Specification
+    Manage Repos from k8s
 
     OpenAPI spec version: 1.0.0
     
@@ -31,11 +31,11 @@ class TestDefaultApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_namespaces_namespace_repos_repo_name_get(self):
+    def test_namespaces_namespace_repos_name_get(self):
         """
-        Test case for namespaces_namespace_repos_repo_name_get
+        Test case for namespaces_namespace_repos_name_get
 
-        Gets a Repo in a Namespace
+        Gets a specific Repo
         """
         pass
 
@@ -44,6 +44,14 @@ class TestDefaultApi(unittest.TestCase):
         Test case for repos_get
 
         Gets Repos
+        """
+        pass
+
+    def test_watch_repos_get(self):
+        """
+        Test case for watch_repos_get
+
+        Watch Repos
         """
         pass
 

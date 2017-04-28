@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Simple API
+    kubeRepo
 
-    A simple API to learn how to write OpenAPI Specification
+    Manage Repos from k8s
 
     OpenAPI spec version: 1.0.0
     
@@ -28,14 +28,14 @@ REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil"]
 setup(
     name=NAME,
     version=VERSION,
-    description="Simple API",
+    description="kubeRepo",
     author_email="",
     url="",
-    keywords=["Swagger", "Simple API"],
+    keywords=["Swagger", "kubeRepo"],
     install_requires=REQUIRES,
     packages=find_packages(),
     include_package_data=True,
     long_description="""\
-    A simple API to learn how to write OpenAPI Specification
+    Manage Repos from k8s
     """
 )

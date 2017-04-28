@@ -2,8 +2,8 @@ swagger: "2.0"
 
 info:
   version: 1.0.0
-  title: Simple API
-  description: A simple API to learn how to write OpenAPI Specification
+  title: kubeRepo
+  description: Manage Repos from k8s
 
 schemes:
   - https
@@ -20,9 +20,18 @@ paths:
           description: A list of repos
           schema:
             $ref: "#/definitions/repos"
-  /namespaces/{namespace}/repos/{repoName}:
+  /watch/repos:
     get:
-      summary: Gets a Repo in a Namespace
+      summary: Watch Repos
+      description: Listen to events about repos
+      responses:
+        200:
+          description: A stream of events
+          schema:
+            $ref: "#/definitions/event"
+  /namespaces/{namespace}/repos/{name}:
+    get:
+      summary: Gets a specific Repo
       description: Returns a specific repo in a namespace
       parameters:
         - name: namespace
@@ -30,11 +39,17 @@ paths:
           required: true
           description: The Repo's namespace
           type: string
-        - name: repoName
+        - name: name
           in: path
           required: true
           description: The Repo's name
           type: string
+        - name: watch
+          uniqueItems: true
+          type: boolean
+          description: Watch for changes to the described resources and return them as a stream
+            of add, update, and remove notifications. Specify resourceVersion.
+          in: query
       responses:
         200:
           description: A single repo
@@ -43,8 +58,14 @@ paths:
 definitions:
   repos:
     properties:
+      type:
+        type: string
+      object:
+        type: string
+  event:
+    properties:
       items:
-        type: array
+        type: object
         items:
           $ref: "#/definitions/repo"
   repo:

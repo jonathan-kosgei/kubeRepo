@@ -4,14 +4,15 @@ All URIs are relative to *https://kubernetes.default.svc/apis/git.k8s.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**namespaces_namespace_repos_repo_name_get**](DefaultApi.md#namespaces_namespace_repos_repo_name_get) | **GET** /namespaces/{namespace}/repos/{repoName} | Gets a Repo in a Namespace
+[**namespaces_namespace_repos_name_get**](DefaultApi.md#namespaces_namespace_repos_name_get) | **GET** /namespaces/{namespace}/repos/{name} | Gets a specific Repo
 [**repos_get**](DefaultApi.md#repos_get) | **GET** /repos | Gets Repos
+[**watch_repos_get**](DefaultApi.md#watch_repos_get) | **GET** /watch/repos | Watch Repos
 
 
-# **namespaces_namespace_repos_repo_name_get**
-> Repo namespaces_namespace_repos_repo_name_get(namespace, repo_name)
+# **namespaces_namespace_repos_name_get**
+> Repo namespaces_namespace_repos_name_get(namespace, name, watch=watch)
 
-Gets a Repo in a Namespace
+Gets a specific Repo
 
 Returns a specific repo in a namespace
 
@@ -26,14 +27,15 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.DefaultApi()
 namespace = 'namespace_example' # str | The Repo's namespace
-repo_name = 'repo_name_example' # str | The Repo's name
+name = 'name_example' # str | The Repo's name
+watch = true # bool | Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. (optional)
 
 try: 
-    # Gets a Repo in a Namespace
-    api_response = api_instance.namespaces_namespace_repos_repo_name_get(namespace, repo_name)
+    # Gets a specific Repo
+    api_response = api_instance.namespaces_namespace_repos_name_get(namespace, name, watch=watch)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling DefaultApi->namespaces_namespace_repos_repo_name_get: %s\n" % e)
+    print("Exception when calling DefaultApi->namespaces_namespace_repos_name_get: %s\n" % e)
 ```
 
 ### Parameters
@@ -41,7 +43,8 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **namespace** | **str**| The Repo&#39;s namespace | 
- **repo_name** | **str**| The Repo&#39;s name | 
+ **name** | **str**| The Repo&#39;s name | 
+ **watch** | **bool**| Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. | [optional] 
 
 ### Return type
 
@@ -90,6 +93,50 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**Repos**](Repos.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **watch_repos_get**
+> Event watch_repos_get()
+
+Watch Repos
+
+Listen to events about repos
+
+### Example 
+```python
+from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+
+try: 
+    # Watch Repos
+    api_response = api_instance.watch_repos_get()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->watch_repos_get: %s\n" % e)
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Event**](Event.md)
 
 ### Authorization
 

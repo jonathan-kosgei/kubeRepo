@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Simple API
+    kubeRepo
 
-    A simple API to learn how to write OpenAPI Specification
+    Manage Repos from k8s
 
     OpenAPI spec version: 1.0.0
     
@@ -85,15 +85,30 @@ class RESTClientObject(object):
         # key file
         key_file = Configuration().key_file
 
+        # proxy
+        proxy = Configuration().proxy
+
         # https pool manager
-        self.pool_manager = urllib3.PoolManager(
-            num_pools=pools_size,
-            maxsize=maxsize,
-            cert_reqs=cert_reqs,
-            ca_certs=ca_certs,
-            cert_file=cert_file,
-            key_file=key_file
-        )
+        if proxy:
+            self.pool_manager = urllib3.ProxyManager(
+                num_pools=pools_size,
+                maxsize=maxsize,
+                cert_reqs=cert_reqs,
+                ca_certs=ca_certs,
+                cert_file=cert_file,
+                key_file=key_file,
+                proxy_url=proxy
+            )
+        else:
+            self.pool_manager = urllib3.PoolManager(
+                num_pools=pools_size,
+                maxsize=maxsize,
+                cert_reqs=cert_reqs,
+                ca_certs=ca_certs,
+                cert_file=cert_file,
+                key_file=key_file
+            )
+
 
     def request(self, method, url, query_params=None, headers=None,
                 body=None, post_params=None, _preload_content=True, _request_timeout=None):
