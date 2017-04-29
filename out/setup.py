@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    kubeRepo
+    kubeResource
 
-    Manage Repos from k8s
+    Manage Third Party Resources from k8s
 
     OpenAPI spec version: 1.0.0
     
@@ -28,14 +28,14 @@ REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil"]
 setup(
     name=NAME,
     version=VERSION,
-    description="kubeRepo",
+    description="kubeResource",
     author_email="",
     url="",
-    keywords=["Swagger", "kubeRepo"],
+    keywords=["Swagger", "kubeResource"],
     install_requires=REQUIRES,
     packages=find_packages(),
     include_package_data=True,
     long_description="""\
-    Manage Repos from k8s
+    Manage Third Party Resources from k8s
     """
 )

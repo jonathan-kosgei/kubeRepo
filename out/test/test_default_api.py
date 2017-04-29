@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    kubeRepo
+    kubeResource
 
-    Manage Repos from k8s
+    Manage Third Party Resources from k8s
 
     OpenAPI spec version: 1.0.0
     
@@ -31,27 +31,27 @@ class TestDefaultApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_namespaces_namespace_repos_name_get(self):
+    def test_apis_fqdn_v1_namespaces_namespace_resource_name_get(self):
         """
-        Test case for namespaces_namespace_repos_name_get
+        Test case for apis_fqdn_v1_namespaces_namespace_resource_name_get
 
-        Gets a specific Repo
-        """
-        pass
-
-    def test_repos_get(self):
-        """
-        Test case for repos_get
-
-        Gets Repos
+        Gets a specific Resource
         """
         pass
 
-    def test_watch_repos_get(self):
+    def test_apis_fqdn_v1_resource_get(self):
         """
-        Test case for watch_repos_get
+        Test case for apis_fqdn_v1_resource_get
 
-        Watch Repos
+        Get resources
+        """
+        pass
+
+    def test_apis_fqdn_v1_watch_resource_get(self):
+        """
+        Test case for apis_fqdn_v1_watch_resource_get
+
+        Watch Resources
         """
         pass
 

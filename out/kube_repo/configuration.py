@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    kubeRepo
+    kubeResource
 
-    Manage Repos from k8s
+    Manage Third Party Resources from k8s
 
     OpenAPI spec version: 1.0.0
     
@@ -45,7 +45,7 @@ class Configuration(object):
         Constructor
         """
         # Default Base url
-        self.host = "https://kubernetes.default.svc/apis/git.k8s.com/v1"
+        self.host = "https://kubernetes.default.svc"
         # Default api client
         self.api_client = None
         # Temp file folder for downloading files

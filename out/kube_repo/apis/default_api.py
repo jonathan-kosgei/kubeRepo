@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    kubeRepo
+    kubeResource
 
-    Manage Repos from k8s
+    Manage Third Party Resources from k8s
 
     OpenAPI spec version: 1.0.0
     
@@ -40,55 +40,59 @@ class DefaultApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def namespaces_namespace_repos_name_get(self, namespace, name, **kwargs):
+    def apis_fqdn_v1_namespaces_namespace_resource_name_get(self, namespace, name, resource, fqdn, **kwargs):
         """
-        Gets a specific Repo
-        Returns a specific repo in a namespace
+        Gets a specific Resource
+        Returns a specific Resource in a namespace
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.namespaces_namespace_repos_name_get(namespace, name, callback=callback_function)
+        >>> thread = api.apis_fqdn_v1_namespaces_namespace_resource_name_get(namespace, name, resource, fqdn, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str namespace: The Repo's namespace (required)
-        :param str name: The Repo's name (required)
-        :return: Repo
+        :param str namespace: The Resource's namespace (required)
+        :param str name: The Resource's name (required)
+        :param str resource: The Resource's name (required)
+        :param str fqdn: The Resource's name (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.namespaces_namespace_repos_name_get_with_http_info(namespace, name, **kwargs)
+            return self.apis_fqdn_v1_namespaces_namespace_resource_name_get_with_http_info(namespace, name, resource, fqdn, **kwargs)
         else:
-            (data) = self.namespaces_namespace_repos_name_get_with_http_info(namespace, name, **kwargs)
+            (data) = self.apis_fqdn_v1_namespaces_namespace_resource_name_get_with_http_info(namespace, name, resource, fqdn, **kwargs)
             return data
 
-    def namespaces_namespace_repos_name_get_with_http_info(self, namespace, name, **kwargs):
+    def apis_fqdn_v1_namespaces_namespace_resource_name_get_with_http_info(self, namespace, name, resource, fqdn, **kwargs):
         """
-        Gets a specific Repo
-        Returns a specific repo in a namespace
+        Gets a specific Resource
+        Returns a specific Resource in a namespace
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.namespaces_namespace_repos_name_get_with_http_info(namespace, name, callback=callback_function)
+        >>> thread = api.apis_fqdn_v1_namespaces_namespace_resource_name_get_with_http_info(namespace, name, resource, fqdn, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str namespace: The Repo's namespace (required)
-        :param str name: The Repo's name (required)
-        :return: Repo
+        :param str namespace: The Resource's namespace (required)
+        :param str name: The Resource's name (required)
+        :param str resource: The Resource's name (required)
+        :param str fqdn: The Resource's name (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['namespace', 'name']
+        all_params = ['namespace', 'name', 'resource', 'fqdn']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -99,16 +103,22 @@ class DefaultApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method namespaces_namespace_repos_name_get" % key
+                    " to method apis_fqdn_v1_namespaces_namespace_resource_name_get" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'namespace' is set
         if ('namespace' not in params) or (params['namespace'] is None):
-            raise ValueError("Missing the required parameter `namespace` when calling `namespaces_namespace_repos_name_get`")
+            raise ValueError("Missing the required parameter `namespace` when calling `apis_fqdn_v1_namespaces_namespace_resource_name_get`")
         # verify the required parameter 'name' is set
         if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `namespaces_namespace_repos_name_get`")
+            raise ValueError("Missing the required parameter `name` when calling `apis_fqdn_v1_namespaces_namespace_resource_name_get`")
+        # verify the required parameter 'resource' is set
+        if ('resource' not in params) or (params['resource'] is None):
+            raise ValueError("Missing the required parameter `resource` when calling `apis_fqdn_v1_namespaces_namespace_resource_name_get`")
+        # verify the required parameter 'fqdn' is set
+        if ('fqdn' not in params) or (params['fqdn'] is None):
+            raise ValueError("Missing the required parameter `fqdn` when calling `apis_fqdn_v1_namespaces_namespace_resource_name_get`")
 
 
         collection_formats = {}
@@ -118,6 +128,10 @@ class DefaultApi(object):
             path_params['namespace'] = params['namespace']
         if 'name' in params:
             path_params['name'] = params['name']
+        if 'resource' in params:
+            path_params['resource'] = params['resource']
+        if 'fqdn' in params:
+            path_params['fqdn'] = params['fqdn']
 
         query_params = {}
 
@@ -130,14 +144,14 @@ class DefaultApi(object):
         # Authentication setting
         auth_settings = []
 
-        return self.api_client.call_api('/namespaces/{namespace}/repos/{name}', 'GET',
+        return self.api_client.call_api('/apis/{fqdn}/v1/namespaces/{namespace}/{resource}/{name}', 'GET',
                                         path_params,
                                         query_params,
                                         header_params,
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='Repo',
+                                        response_type='object',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -145,53 +159,57 @@ class DefaultApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def repos_get(self, **kwargs):
+    def apis_fqdn_v1_resource_get(self, resource, fqdn, **kwargs):
         """
-        Gets Repos
-        Returns a list of repos
+        Get resources
+        Returns a list of resources of kind
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.repos_get(callback=callback_function)
+        >>> thread = api.apis_fqdn_v1_resource_get(resource, fqdn, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
+        :param str resource: The Resource's name (required)
+        :param str fqdn: The Resource's name (required)
         :param bool watch: Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
-        :return: Repos
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.repos_get_with_http_info(**kwargs)
+            return self.apis_fqdn_v1_resource_get_with_http_info(resource, fqdn, **kwargs)
         else:
-            (data) = self.repos_get_with_http_info(**kwargs)
+            (data) = self.apis_fqdn_v1_resource_get_with_http_info(resource, fqdn, **kwargs)
             return data
 
-    def repos_get_with_http_info(self, **kwargs):
+    def apis_fqdn_v1_resource_get_with_http_info(self, resource, fqdn, **kwargs):
         """
-        Gets Repos
-        Returns a list of repos
+        Get resources
+        Returns a list of resources of kind
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.repos_get_with_http_info(callback=callback_function)
+        >>> thread = api.apis_fqdn_v1_resource_get_with_http_info(resource, fqdn, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
+        :param str resource: The Resource's name (required)
+        :param str fqdn: The Resource's name (required)
         :param bool watch: Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
-        :return: Repos
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['watch']
+        all_params = ['resource', 'fqdn', 'watch']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -202,15 +220,25 @@ class DefaultApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method repos_get" % key
+                    " to method apis_fqdn_v1_resource_get" % key
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'resource' is set
+        if ('resource' not in params) or (params['resource'] is None):
+            raise ValueError("Missing the required parameter `resource` when calling `apis_fqdn_v1_resource_get`")
+        # verify the required parameter 'fqdn' is set
+        if ('fqdn' not in params) or (params['fqdn'] is None):
+            raise ValueError("Missing the required parameter `fqdn` when calling `apis_fqdn_v1_resource_get`")
 
 
         collection_formats = {}
 
         path_params = {}
+        if 'resource' in params:
+            path_params['resource'] = params['resource']
+        if 'fqdn' in params:
+            path_params['fqdn'] = params['fqdn']
 
         query_params = {}
         if 'watch' in params:
@@ -225,14 +253,14 @@ class DefaultApi(object):
         # Authentication setting
         auth_settings = []
 
-        return self.api_client.call_api('/repos', 'GET',
+        return self.api_client.call_api('/apis/{fqdn}/v1/{resource}', 'GET',
                                         path_params,
                                         query_params,
                                         header_params,
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='Repos',
+                                        response_type=None,
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -240,51 +268,55 @@ class DefaultApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def watch_repos_get(self, **kwargs):
+    def apis_fqdn_v1_watch_resource_get(self, resource, fqdn, **kwargs):
         """
-        Watch Repos
-        Listen to events about repos
+        Watch Resources
+        Listen to events about Resources
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.watch_repos_get(callback=callback_function)
+        >>> thread = api.apis_fqdn_v1_watch_resource_get(resource, fqdn, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :return: Event
+        :param str resource: The Resource's name (required)
+        :param str fqdn: The Resource's name (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.watch_repos_get_with_http_info(**kwargs)
+            return self.apis_fqdn_v1_watch_resource_get_with_http_info(resource, fqdn, **kwargs)
         else:
-            (data) = self.watch_repos_get_with_http_info(**kwargs)
+            (data) = self.apis_fqdn_v1_watch_resource_get_with_http_info(resource, fqdn, **kwargs)
             return data
 
-    def watch_repos_get_with_http_info(self, **kwargs):
+    def apis_fqdn_v1_watch_resource_get_with_http_info(self, resource, fqdn, **kwargs):
         """
-        Watch Repos
-        Listen to events about repos
+        Watch Resources
+        Listen to events about Resources
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.watch_repos_get_with_http_info(callback=callback_function)
+        >>> thread = api.apis_fqdn_v1_watch_resource_get_with_http_info(resource, fqdn, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :return: Event
+        :param str resource: The Resource's name (required)
+        :param str fqdn: The Resource's name (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []
+        all_params = ['resource', 'fqdn']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -295,14 +327,25 @@ class DefaultApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method watch_repos_get" % key
+                    " to method apis_fqdn_v1_watch_resource_get" % key
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'resource' is set
+        if ('resource' not in params) or (params['resource'] is None):
+            raise ValueError("Missing the required parameter `resource` when calling `apis_fqdn_v1_watch_resource_get`")
+        # verify the required parameter 'fqdn' is set
+        if ('fqdn' not in params) or (params['fqdn'] is None):
+            raise ValueError("Missing the required parameter `fqdn` when calling `apis_fqdn_v1_watch_resource_get`")
+
 
         collection_formats = {}
 
         path_params = {}
+        if 'resource' in params:
+            path_params['resource'] = params['resource']
+        if 'fqdn' in params:
+            path_params['fqdn'] = params['fqdn']
 
         query_params = {}
 
@@ -315,14 +358,14 @@ class DefaultApi(object):
         # Authentication setting
         auth_settings = []
 
-        return self.api_client.call_api('/watch/repos', 'GET',
+        return self.api_client.call_api('/apis/{fqdn}/v1/watch/{resource}', 'GET',
                                         path_params,
                                         query_params,
                                         header_params,
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='Event',
+                                        response_type='object',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),

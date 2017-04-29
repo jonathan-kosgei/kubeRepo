@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    kubeRepo
+    kubeResource
 
-    Manage Repos from k8s
+    Manage Third Party Resources from k8s
 
     OpenAPI spec version: 1.0.0
     
@@ -14,10 +14,6 @@
 from __future__ import absolute_import
 
 # import models into sdk package
-from .models.event import Event
-from .models.metadata import Metadata
-from .models.repo import Repo
-from .models.repos import Repos
 
 # import apis into sdk package
 from .apis.default_api import DefaultApi
