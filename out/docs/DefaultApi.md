@@ -24,6 +24,11 @@ import kube_repo
 from kube_repo.rest import ApiException
 from pprint import pprint
 
+# Configure API key authorization: Bearer
+kube_repo.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# kube_repo.configuration.api_key_prefix['Authorization'] = 'Bearer'
+
 # create an instance of the API class
 api_instance = kube_repo.DefaultApi()
 namespace = 'namespace_example' # str | The Repo's namespace
@@ -50,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -73,6 +78,11 @@ import time
 import kube_repo
 from kube_repo.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: Bearer
+kube_repo.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# kube_repo.configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = kube_repo.DefaultApi()
@@ -98,7 +108,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -122,6 +132,11 @@ import kube_repo
 from kube_repo.rest import ApiException
 from pprint import pprint
 
+# Configure API key authorization: Bearer
+kube_repo.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# kube_repo.configuration.api_key_prefix['Authorization'] = 'Bearer'
+
 # create an instance of the API class
 api_instance = kube_repo.DefaultApi()
 
@@ -142,7 +157,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

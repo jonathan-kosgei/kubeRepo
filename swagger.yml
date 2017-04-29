@@ -3,15 +3,21 @@ swagger: "2.0"
 info:
   version: 1.0.0
   title: kubeRepo
-  description: Manage Repos from k8s
+  description: Manage Third Party Resources from k8s
 
 schemes:
   - https
 host: kubernetes.default.svc
-
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
 paths:
   /apis/git.k8s.com/v1/repos:
     get:
+      security:
+        - Bearer: []
       summary: Gets Repos
       description: Returns a list of repos
       responses:
@@ -28,6 +34,8 @@ paths:
           in: query
   /apis/git.k8s.com/v1/watch/repos:
     get:
+      security:
+        - Bearer: []
       summary: Watch Repos
       description: Listen to events about repos
       responses:
@@ -37,6 +45,8 @@ paths:
             $ref: "#/definitions/event"
   /apis/git.k8s.com/v1/namespaces/{namespace}/repos/{name}:
     get:
+      security:
+        - Bearer: []
       summary: Gets a specific Repo
       description: Returns a specific repo in a namespace
       parameters:

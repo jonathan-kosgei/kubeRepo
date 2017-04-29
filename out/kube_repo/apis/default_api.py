@@ -3,7 +3,7 @@
 """
     kubeRepo
 
-    Manage Repos from k8s
+    Manage Third Party Resources from k8s
 
     OpenAPI spec version: 1.0.0
     
@@ -128,7 +128,7 @@ class DefaultApi(object):
 
         body_params = None
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['Bearer']
 
         return self.api_client.call_api('/apis/git.k8s.com/v1/namespaces/{namespace}/repos/{name}', 'GET',
                                         path_params,
@@ -223,7 +223,7 @@ class DefaultApi(object):
 
         body_params = None
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['Bearer']
 
         return self.api_client.call_api('/apis/git.k8s.com/v1/repos', 'GET',
                                         path_params,
@@ -313,7 +313,7 @@ class DefaultApi(object):
 
         body_params = None
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['Bearer']
 
         return self.api_client.call_api('/apis/git.k8s.com/v1/watch/repos', 'GET',
                                         path_params,

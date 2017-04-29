@@ -3,7 +3,7 @@
 """
     kubeRepo
 
-    Manage Repos from k8s
+    Manage Third Party Resources from k8s
 
     OpenAPI spec version: 1.0.0
     
@@ -36,6 +36,6 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     long_description="""\
-    Manage Repos from k8s
+    Manage Third Party Resources from k8s
     """
 )

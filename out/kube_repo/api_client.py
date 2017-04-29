@@ -2,7 +2,7 @@
 """
     kubeRepo
 
-    Manage Repos from k8s
+    Manage Third Party Resources from k8s
 
     OpenAPI spec version: 1.0.0
     

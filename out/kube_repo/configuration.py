@@ -3,7 +3,7 @@
 """
     kubeRepo
 
-    Manage Repos from k8s
+    Manage Third Party Resources from k8s
 
     OpenAPI spec version: 1.0.0
     
@@ -205,6 +205,13 @@ class Configuration(object):
         :return: The Auth Settings information dict.
         """
         return {
+            'Bearer':
+                {
+                    'type': 'api_key',
+                    'in': 'header',
+                    'key': 'Authorization',
+                    'value': self.get_api_key_with_prefix('Authorization')
+                },
 
         }
 
