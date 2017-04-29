@@ -2,26 +2,23 @@ swagger: "2.0"
 
 info:
   version: 1.0.0
-  title: kubeResource
-  description: Manage Third Party Resources from k8s
+  title: kubeRepo
+  description: Manage Repos from k8s
 
 schemes:
   - https
 host: kubernetes.default.svc
 
 paths:
-  /apis/{fqdn}/v1/{resource}:
+  /apis/git.k8s.com/v1/repos:
     get:
-      summary: Get resources
-      description: Returns a list of resources of kind 
+      summary: Gets Repos
+      description: Returns a list of repos
       responses:
         200:
-          description: A list of resources
+          description: A list of repos
           schema:
-            items:
-              type: array
-              items: 
-                type: object
+            $ref: "#/definitions/repos"
       parameters:
         - name: watch
           uniqueItems: true
@@ -29,63 +26,74 @@ paths:
           description: Watch for changes to the described resources and return them as a stream
             of add, update, and remove notifications. Specify resourceVersion.
           in: query
-        - name: resource
-          in: path
-          required: true
-          description: The Resource's name
-          type: string
-        - name: fqdn
-          in: path
-          required: true
-          description: The Resource's name
-          type: string
-  /apis/{fqdn}/v1/watch/{resource}:
+  /apis/git.k8s.com/v1/watch/repos:
     get:
-      summary: Watch Resources
-      description: Listen to events about Resources
+      summary: Watch Repos
+      description: Listen to events about repos
       responses:
         200:
           description: A stream of events
           schema:
-            type: object
-      parameters:
-        - name: resource
-          in: path
-          required: true
-          description: The Resource's name
-          type: string
-        - name: fqdn
-          in: path
-          required: true
-          description: The Resource's name
-          type: string
-  /apis/{fqdn}/v1/namespaces/{namespace}/{resource}/{name}:
+            $ref: "#/definitions/event"
+  /apis/git.k8s.com/v1/namespaces/{namespace}/repos/{name}:
     get:
-      summary: Gets a specific Resource
-      description: Returns a specific Resource in a namespace
+      summary: Gets a specific Repo
+      description: Returns a specific repo in a namespace
       parameters:
         - name: namespace
           in: path
           required: true
-          description: The Resource's namespace
+          description: The Repo's namespace
           type: string
         - name: name
           in: path
           required: true
-          description: The Resource's name
-          type: string
-        - name: resource
-          in: path
-          required: true
-          description: The Resource's name
-          type: string
-        - name: fqdn
-          in: path
-          required: true
-          description: The Resource's name
+          description: The Repo's name
           type: string
       responses:
         200:
-          description: A single Resource
+          description: A single repo
           schema:
-            type: object 
+            $ref: "#/definitions/repo"
+definitions:
+  event:
+    properties:
+      type:
+        type: string
+      object:
+        $ref: "#/definitions/repo"
+  repos:
+    properties:
+      items:
+        type: array
+        items:
+          $ref: "#/definitions/repo"
+  repo:
+    type: object
+    properties:   
+      branch:
+        type: string
+      image:
+        type: string
+      key:
+        type: string
+      oauth:
+        type: string
+      path:
+        type: string
+      repo:
+        type: string
+      then:
+        type: string
+      pvc:
+        type: string
+      metadata:
+          $ref: "#/definitions/metadata"
+  metadata:
+    properties:
+      name:
+        type: string
+      namespace:
+        type: string
+      selfLink:
+        type: string

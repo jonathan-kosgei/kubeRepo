@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    kubeResource
+    kubeRepo
 
-    Manage Third Party Resources from k8s
+    Manage Repos from k8s
 
     OpenAPI spec version: 1.0.0
     
@@ -14,3 +14,7 @@
 from __future__ import absolute_import
 
 # import models into model package
+from .event import Event
+from .metadata import Metadata
+from .repo import Repo
+from .repos import Repos
