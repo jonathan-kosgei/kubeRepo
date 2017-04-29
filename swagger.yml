@@ -20,12 +20,6 @@ paths:
         - Bearer: []
       summary: Gets Repos
       description: Returns a list of repos
-      produces:
-        - application/json
-        - application/yaml
-        - application/vnd.kubernetes.protobuf
-        - application/json;stream=watch
-        - application/vnd.kubernetes.protobuf;stream=watch
       responses:
         200:
           description: A list of repos
@@ -44,12 +38,6 @@ paths:
         - Bearer: []
       summary: Watch Repos
       description: Listen to events about repos
-      produces:
-        - application/json
-        - application/yaml
-        - application/vnd.kubernetes.protobuf
-        - application/json;stream=watch
-        - application/vnd.kubernetes.protobuf;stream=watch
       responses:
         200:
           description: A stream of events
