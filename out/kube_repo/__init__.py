@@ -17,7 +17,6 @@ from __future__ import absolute_import
 from .models.event import Event
 from .models.metadata import Metadata
 from .models.repo import Repo
-from .models.repos import Repos
 
 # import apis into sdk package
 from .apis.default_api import DefaultApi

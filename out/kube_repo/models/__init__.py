@@ -17,4 +17,3 @@ from __future__ import absolute_import
 from .event import Event
 from .metadata import Metadata
 from .repo import Repo
-from .repos import Repos

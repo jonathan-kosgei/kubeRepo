@@ -145,7 +145,7 @@ class DefaultApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def apis_git_k8s_com_v1_repos_get(self, **kwargs):
+    def apis_git_k8s_com_v1_repos_get(self, watch, **kwargs):
         """
         Gets Repos
         Returns a list of repos
@@ -155,23 +155,23 @@ class DefaultApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.apis_git_k8s_com_v1_repos_get(callback=callback_function)
+        >>> thread = api.apis_git_k8s_com_v1_repos_get(watch, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param bool watch: Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
-        :return: Repos
+        :param bool watch: Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. (required)
+        :return: Event
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.apis_git_k8s_com_v1_repos_get_with_http_info(**kwargs)
+            return self.apis_git_k8s_com_v1_repos_get_with_http_info(watch, **kwargs)
         else:
-            (data) = self.apis_git_k8s_com_v1_repos_get_with_http_info(**kwargs)
+            (data) = self.apis_git_k8s_com_v1_repos_get_with_http_info(watch, **kwargs)
             return data
 
-    def apis_git_k8s_com_v1_repos_get_with_http_info(self, **kwargs):
+    def apis_git_k8s_com_v1_repos_get_with_http_info(self, watch, **kwargs):
         """
         Gets Repos
         Returns a list of repos
@@ -181,12 +181,12 @@ class DefaultApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.apis_git_k8s_com_v1_repos_get_with_http_info(callback=callback_function)
+        >>> thread = api.apis_git_k8s_com_v1_repos_get_with_http_info(watch, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param bool watch: Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
-        :return: Repos
+        :param bool watch: Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. (required)
+        :return: Event
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -206,6 +206,9 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'watch' is set
+        if ('watch' not in params) or (params['watch'] is None):
+            raise ValueError("Missing the required parameter `watch` when calling `apis_git_k8s_com_v1_repos_get`")
 
 
         collection_formats = {}
@@ -222,108 +225,10 @@ class DefaultApi(object):
         local_var_files = {}
 
         body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json', 'application/yaml', 'application/vnd.kubernetes.protobuf', 'application/json;stream=watch', 'application/vnd.kubernetes.protobuf;stream=watch'])
-
         # Authentication setting
         auth_settings = ['Bearer']
 
         return self.api_client.call_api('/apis/git.k8s.com/v1/repos', 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='Repos',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def apis_git_k8s_com_v1_watch_repos_get(self, **kwargs):
-        """
-        Watch Repos
-        Listen to events about repos
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.apis_git_k8s_com_v1_watch_repos_get(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :return: Event
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.apis_git_k8s_com_v1_watch_repos_get_with_http_info(**kwargs)
-        else:
-            (data) = self.apis_git_k8s_com_v1_watch_repos_get_with_http_info(**kwargs)
-            return data
-
-    def apis_git_k8s_com_v1_watch_repos_get_with_http_info(self, **kwargs):
-        """
-        Watch Repos
-        Listen to events about repos
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.apis_git_k8s_com_v1_watch_repos_get_with_http_info(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :return: Event
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = []
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method apis_git_k8s_com_v1_watch_repos_get" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json', 'application/yaml', 'application/vnd.kubernetes.protobuf', 'application/json;stream=watch', 'application/vnd.kubernetes.protobuf;stream=watch'])
-
-        # Authentication setting
-        auth_settings = ['Bearer']
-
-        return self.api_client.call_api('/apis/git.k8s.com/v1/watch/repos', 'GET',
                                         path_params,
                                         query_params,
                                         header_params,

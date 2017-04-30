@@ -77,7 +77,6 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *DefaultApi* | [**apis_git_k8s_com_v1_namespaces_namespace_repos_name_get**](docs/DefaultApi.md#apis_git_k8s_com_v1_namespaces_namespace_repos_name_get) | **GET** /apis/git.k8s.com/v1/namespaces/{namespace}/repos/{name} | Gets a specific Repo
 *DefaultApi* | [**apis_git_k8s_com_v1_repos_get**](docs/DefaultApi.md#apis_git_k8s_com_v1_repos_get) | **GET** /apis/git.k8s.com/v1/repos | Gets Repos
-*DefaultApi* | [**apis_git_k8s_com_v1_watch_repos_get**](docs/DefaultApi.md#apis_git_k8s_com_v1_watch_repos_get) | **GET** /apis/git.k8s.com/v1/watch/repos | Watch Repos
 
 
 ## Documentation For Models
@@ -85,7 +84,6 @@ Class | Method | HTTP request | Description
  - [Event](docs/Event.md)
  - [Metadata](docs/Metadata.md)
  - [Repo](docs/Repo.md)
- - [Repos](docs/Repos.md)
 
 
 ## Documentation For Authorization
