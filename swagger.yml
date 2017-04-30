@@ -57,10 +57,11 @@ paths:
             $ref: "#/definitions/repo"
 definitions:
   event:
+    type: object
     properties:
       type:
         type: string
-      object:
+      raw_object:
         $ref: "#/definitions/repo"
   repo:
     type: object
