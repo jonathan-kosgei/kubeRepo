@@ -62,7 +62,7 @@ class Watch(object):
     def __init__(self, return_type=None):
         self._raw_return_type = return_type
         self._stop = False
-        self._api_client = client.DefaultApi()
+        self._api_client = client.ApiClient()
 
     def stop(self):
         self._stop = True
