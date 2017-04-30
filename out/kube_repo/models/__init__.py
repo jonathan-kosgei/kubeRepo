@@ -14,5 +14,6 @@
 from __future__ import absolute_import
 
 # import models into model package
+from .event import Event
 from .metadata import Metadata
 from .repo import Repo

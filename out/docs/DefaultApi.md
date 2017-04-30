@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **apis_git_k8s_com_v1_repos_get**
-> object apis_git_k8s_com_v1_repos_get(watch)
+> Event apis_git_k8s_com_v1_repos_get(watch)
 
 Gets Repos
 
@@ -103,7 +103,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**Event**](Event.md)
 
 ### Authorization
 

@@ -160,7 +160,7 @@ class DefaultApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param bool watch: Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. (required)
-        :return: object
+        :return: Event
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -186,7 +186,7 @@ class DefaultApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param bool watch: Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. (required)
-        :return: object
+        :return: Event
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -235,7 +235,7 @@ class DefaultApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='object',
+                                        response_type='Event',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),

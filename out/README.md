@@ -81,6 +81,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [Event](docs/Event.md)
  - [Metadata](docs/Metadata.md)
  - [Repo](docs/Repo.md)
 
