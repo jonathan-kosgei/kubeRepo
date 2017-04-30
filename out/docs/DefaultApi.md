@@ -4,12 +4,12 @@ All URIs are relative to *https://kubernetes.default.svc*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**apis_fqdn_v1_namespaces_namespace_resource_name_get**](DefaultApi.md#apis_fqdn_v1_namespaces_namespace_resource_name_get) | **GET** /apis/{fqdn}/v1/namespaces/{namespace}/{resource}/{name} | Gets a specific Repo
-[**apis_fqdn_v1_resource_get**](DefaultApi.md#apis_fqdn_v1_resource_get) | **GET** /apis/{fqdn}/v1/{resource} | Gets Repos
+[**apis_git_k8s_com_v1_namespaces_namespace_repos_name_get**](DefaultApi.md#apis_git_k8s_com_v1_namespaces_namespace_repos_name_get) | **GET** /apis/git.k8s.com/v1/namespaces/{namespace}/repos/{name} | Gets a specific Repo
+[**apis_git_k8s_com_v1_repos_get**](DefaultApi.md#apis_git_k8s_com_v1_repos_get) | **GET** /apis/git.k8s.com/v1/repos | Gets Repos
 
 
-# **apis_fqdn_v1_namespaces_namespace_resource_name_get**
-> Repo apis_fqdn_v1_namespaces_namespace_resource_name_get(namespace, name, resource, fqdn)
+# **apis_git_k8s_com_v1_namespaces_namespace_repos_name_get**
+> Repo apis_git_k8s_com_v1_namespaces_namespace_repos_name_get(namespace, name)
 
 Gets a specific Repo
 
@@ -32,15 +32,13 @@ kube_repo.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 api_instance = kube_repo.DefaultApi()
 namespace = 'namespace_example' # str | The Repo's namespace
 name = 'name_example' # str | The Repo's name
-resource = 'resource_example' # str | The Repo's name
-fqdn = 'fqdn_example' # str | The Repo's name
 
 try: 
     # Gets a specific Repo
-    api_response = api_instance.apis_fqdn_v1_namespaces_namespace_resource_name_get(namespace, name, resource, fqdn)
+    api_response = api_instance.apis_git_k8s_com_v1_namespaces_namespace_repos_name_get(namespace, name)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling DefaultApi->apis_fqdn_v1_namespaces_namespace_resource_name_get: %s\n" % e)
+    print("Exception when calling DefaultApi->apis_git_k8s_com_v1_namespaces_namespace_repos_name_get: %s\n" % e)
 ```
 
 ### Parameters
@@ -49,8 +47,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **namespace** | **str**| The Repo&#39;s namespace | 
  **name** | **str**| The Repo&#39;s name | 
- **resource** | **str**| The Repo&#39;s name | 
- **fqdn** | **str**| The Repo&#39;s name | 
 
 ### Return type
 
@@ -67,8 +63,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apis_fqdn_v1_resource_get**
-> object apis_fqdn_v1_resource_get(watch, resource, fqdn)
+# **apis_git_k8s_com_v1_repos_get**
+> Event apis_git_k8s_com_v1_repos_get(watch)
 
 Gets Repos
 
@@ -90,15 +86,13 @@ kube_repo.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = kube_repo.DefaultApi()
 watch = true # bool | Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
-resource = 'resource_example' # str | The Repo's name
-fqdn = 'fqdn_example' # str | The Repo's name
 
 try: 
     # Gets Repos
-    api_response = api_instance.apis_fqdn_v1_resource_get(watch, resource, fqdn)
+    api_response = api_instance.apis_git_k8s_com_v1_repos_get(watch)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling DefaultApi->apis_fqdn_v1_resource_get: %s\n" % e)
+    print("Exception when calling DefaultApi->apis_git_k8s_com_v1_repos_get: %s\n" % e)
 ```
 
 ### Parameters
@@ -106,12 +100,10 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **watch** | **bool**| Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. | 
- **resource** | **str**| The Repo&#39;s name | 
- **fqdn** | **str**| The Repo&#39;s name | 
 
 ### Return type
 
-**object**
+[**Event**](Event.md)
 
 ### Authorization
 
