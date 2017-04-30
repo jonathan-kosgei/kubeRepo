@@ -14,7 +14,6 @@
 from __future__ import absolute_import
 
 # import models into sdk package
-from .models.event import Event
 from .models.metadata import Metadata
 from .models.repo import Repo
 

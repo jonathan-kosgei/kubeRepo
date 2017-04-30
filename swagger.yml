@@ -32,7 +32,7 @@ paths:
         200:
           description: A list of repos
           schema:
-            $ref: "#/definitions/event"
+            type: object
   /apis/git.k8s.com/v1/namespaces/{namespace}/repos/{name}:
     get:
       security:
@@ -56,12 +56,6 @@ paths:
           schema:
             $ref: "#/definitions/repo"
 definitions:
-  event:
-    properties:
-      type:
-        type: string
-      raw_object:
-        $ref: "#/definitions/repo"
   repo:
     type: object
     properties:   
