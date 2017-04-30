@@ -59,13 +59,15 @@ kube_repo.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 api_instance = kube_repo.DefaultApi()
 namespace = 'namespace_example' # str | The Repo's namespace
 name = 'name_example' # str | The Repo's name
+resource = 'resource_example' # str | The Repo's name
+fqdn = 'fqdn_example' # str | The Repo's name
 
 try:
     # Gets a specific Repo
-    api_response = api_instance.apis_git_k8s_com_v1_namespaces_namespace_repos_name_get(namespace, name)
+    api_response = api_instance.apis_fqdn_v1_namespaces_namespace_resource_name_get(namespace, name, resource, fqdn)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling DefaultApi->apis_git_k8s_com_v1_namespaces_namespace_repos_name_get: %s\n" % e)
+    print("Exception when calling DefaultApi->apis_fqdn_v1_namespaces_namespace_resource_name_get: %s\n" % e)
 
 ```
 
@@ -75,8 +77,8 @@ All URIs are relative to *https://kubernetes.default.svc*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**apis_git_k8s_com_v1_namespaces_namespace_repos_name_get**](docs/DefaultApi.md#apis_git_k8s_com_v1_namespaces_namespace_repos_name_get) | **GET** /apis/git.k8s.com/v1/namespaces/{namespace}/repos/{name} | Gets a specific Repo
-*DefaultApi* | [**apis_git_k8s_com_v1_repos_get**](docs/DefaultApi.md#apis_git_k8s_com_v1_repos_get) | **GET** /apis/git.k8s.com/v1/repos | Gets Repos
+*DefaultApi* | [**apis_fqdn_v1_namespaces_namespace_resource_name_get**](docs/DefaultApi.md#apis_fqdn_v1_namespaces_namespace_resource_name_get) | **GET** /apis/{fqdn}/v1/namespaces/{namespace}/{resource}/{name} | Gets a specific Repo
+*DefaultApi* | [**apis_fqdn_v1_resource_get**](docs/DefaultApi.md#apis_fqdn_v1_resource_get) | **GET** /apis/{fqdn}/v1/{resource} | Gets Repos
 
 
 ## Documentation For Models

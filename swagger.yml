@@ -2,7 +2,7 @@ swagger: "2.0"
 
 info:
   version: 1.0.0
-  title: kubeRepo
+  title: kubeResource
   description: Manage Third Party Resources from k8s
 
 schemes:
@@ -14,7 +14,7 @@ securityDefinitions:
     name: Authorization
     in: header
 paths:
-  /apis/git.k8s.com/v1/repos:
+  /apis/{fqdn}/v1/{resource}:
     get:
       security:
         - Bearer: []
@@ -28,12 +28,22 @@ paths:
           description: Watch for changes to the described resources and return them as a stream
             of add, update, and remove notifications. Specify resourceVersion.
           in: query
+        - name: resource
+          in: path
+          required: true
+          description: The Repo's name
+          type: string
+        - name: fqdn
+          in: path
+          required: true
+          description: The Repo's name
+          type: string
       responses:
         200:
           description: A list of repos
           schema:
-            $ref: "#/definitions/event"
-  /apis/git.k8s.com/v1/namespaces/{namespace}/repos/{name}:
+            type: object
+  /apis/{fqdn}/v1/namespaces/{namespace}/{resource}/{name}:
     get:
       security:
         - Bearer: []
@@ -46,6 +56,16 @@ paths:
           description: The Repo's namespace
           type: string
         - name: name
+          in: path
+          required: true
+          description: The Repo's name
+          type: string
+        - name: resource
+          in: path
+          required: true
+          description: The Repo's name
+          type: string
+        - name: fqdn
           in: path
           required: true
           description: The Repo's name

@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    kubeRepo
+    kubeResource
 
     Manage Third Party Resources from k8s
 
@@ -40,7 +40,7 @@ class DefaultApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def apis_git_k8s_com_v1_namespaces_namespace_repos_name_get(self, namespace, name, **kwargs):
+    def apis_fqdn_v1_namespaces_namespace_resource_name_get(self, namespace, name, resource, fqdn, **kwargs):
         """
         Gets a specific Repo
         Returns a specific repo in a namespace
@@ -50,24 +50,26 @@ class DefaultApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.apis_git_k8s_com_v1_namespaces_namespace_repos_name_get(namespace, name, callback=callback_function)
+        >>> thread = api.apis_fqdn_v1_namespaces_namespace_resource_name_get(namespace, name, resource, fqdn, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str namespace: The Repo's namespace (required)
         :param str name: The Repo's name (required)
+        :param str resource: The Repo's name (required)
+        :param str fqdn: The Repo's name (required)
         :return: Repo
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.apis_git_k8s_com_v1_namespaces_namespace_repos_name_get_with_http_info(namespace, name, **kwargs)
+            return self.apis_fqdn_v1_namespaces_namespace_resource_name_get_with_http_info(namespace, name, resource, fqdn, **kwargs)
         else:
-            (data) = self.apis_git_k8s_com_v1_namespaces_namespace_repos_name_get_with_http_info(namespace, name, **kwargs)
+            (data) = self.apis_fqdn_v1_namespaces_namespace_resource_name_get_with_http_info(namespace, name, resource, fqdn, **kwargs)
             return data
 
-    def apis_git_k8s_com_v1_namespaces_namespace_repos_name_get_with_http_info(self, namespace, name, **kwargs):
+    def apis_fqdn_v1_namespaces_namespace_resource_name_get_with_http_info(self, namespace, name, resource, fqdn, **kwargs):
         """
         Gets a specific Repo
         Returns a specific repo in a namespace
@@ -77,18 +79,20 @@ class DefaultApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.apis_git_k8s_com_v1_namespaces_namespace_repos_name_get_with_http_info(namespace, name, callback=callback_function)
+        >>> thread = api.apis_fqdn_v1_namespaces_namespace_resource_name_get_with_http_info(namespace, name, resource, fqdn, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str namespace: The Repo's namespace (required)
         :param str name: The Repo's name (required)
+        :param str resource: The Repo's name (required)
+        :param str fqdn: The Repo's name (required)
         :return: Repo
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['namespace', 'name']
+        all_params = ['namespace', 'name', 'resource', 'fqdn']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -99,16 +103,22 @@ class DefaultApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method apis_git_k8s_com_v1_namespaces_namespace_repos_name_get" % key
+                    " to method apis_fqdn_v1_namespaces_namespace_resource_name_get" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'namespace' is set
         if ('namespace' not in params) or (params['namespace'] is None):
-            raise ValueError("Missing the required parameter `namespace` when calling `apis_git_k8s_com_v1_namespaces_namespace_repos_name_get`")
+            raise ValueError("Missing the required parameter `namespace` when calling `apis_fqdn_v1_namespaces_namespace_resource_name_get`")
         # verify the required parameter 'name' is set
         if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `apis_git_k8s_com_v1_namespaces_namespace_repos_name_get`")
+            raise ValueError("Missing the required parameter `name` when calling `apis_fqdn_v1_namespaces_namespace_resource_name_get`")
+        # verify the required parameter 'resource' is set
+        if ('resource' not in params) or (params['resource'] is None):
+            raise ValueError("Missing the required parameter `resource` when calling `apis_fqdn_v1_namespaces_namespace_resource_name_get`")
+        # verify the required parameter 'fqdn' is set
+        if ('fqdn' not in params) or (params['fqdn'] is None):
+            raise ValueError("Missing the required parameter `fqdn` when calling `apis_fqdn_v1_namespaces_namespace_resource_name_get`")
 
 
         collection_formats = {}
@@ -118,6 +128,10 @@ class DefaultApi(object):
             path_params['namespace'] = params['namespace']
         if 'name' in params:
             path_params['name'] = params['name']
+        if 'resource' in params:
+            path_params['resource'] = params['resource']
+        if 'fqdn' in params:
+            path_params['fqdn'] = params['fqdn']
 
         query_params = {}
 
@@ -130,7 +144,7 @@ class DefaultApi(object):
         # Authentication setting
         auth_settings = ['Bearer']
 
-        return self.api_client.call_api('/apis/git.k8s.com/v1/namespaces/{namespace}/repos/{name}', 'GET',
+        return self.api_client.call_api('/apis/{fqdn}/v1/namespaces/{namespace}/{resource}/{name}', 'GET',
                                         path_params,
                                         query_params,
                                         header_params,
@@ -145,7 +159,7 @@ class DefaultApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def apis_git_k8s_com_v1_repos_get(self, watch, **kwargs):
+    def apis_fqdn_v1_resource_get(self, watch, resource, fqdn, **kwargs):
         """
         Gets Repos
         Returns a list of repos
@@ -155,23 +169,25 @@ class DefaultApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.apis_git_k8s_com_v1_repos_get(watch, callback=callback_function)
+        >>> thread = api.apis_fqdn_v1_resource_get(watch, resource, fqdn, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param bool watch: Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. (required)
-        :return: Event
+        :param str resource: The Repo's name (required)
+        :param str fqdn: The Repo's name (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.apis_git_k8s_com_v1_repos_get_with_http_info(watch, **kwargs)
+            return self.apis_fqdn_v1_resource_get_with_http_info(watch, resource, fqdn, **kwargs)
         else:
-            (data) = self.apis_git_k8s_com_v1_repos_get_with_http_info(watch, **kwargs)
+            (data) = self.apis_fqdn_v1_resource_get_with_http_info(watch, resource, fqdn, **kwargs)
             return data
 
-    def apis_git_k8s_com_v1_repos_get_with_http_info(self, watch, **kwargs):
+    def apis_fqdn_v1_resource_get_with_http_info(self, watch, resource, fqdn, **kwargs):
         """
         Gets Repos
         Returns a list of repos
@@ -181,17 +197,19 @@ class DefaultApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.apis_git_k8s_com_v1_repos_get_with_http_info(watch, callback=callback_function)
+        >>> thread = api.apis_fqdn_v1_resource_get_with_http_info(watch, resource, fqdn, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param bool watch: Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. (required)
-        :return: Event
+        :param str resource: The Repo's name (required)
+        :param str fqdn: The Repo's name (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['watch']
+        all_params = ['watch', 'resource', 'fqdn']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -202,18 +220,28 @@ class DefaultApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method apis_git_k8s_com_v1_repos_get" % key
+                    " to method apis_fqdn_v1_resource_get" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'watch' is set
         if ('watch' not in params) or (params['watch'] is None):
-            raise ValueError("Missing the required parameter `watch` when calling `apis_git_k8s_com_v1_repos_get`")
+            raise ValueError("Missing the required parameter `watch` when calling `apis_fqdn_v1_resource_get`")
+        # verify the required parameter 'resource' is set
+        if ('resource' not in params) or (params['resource'] is None):
+            raise ValueError("Missing the required parameter `resource` when calling `apis_fqdn_v1_resource_get`")
+        # verify the required parameter 'fqdn' is set
+        if ('fqdn' not in params) or (params['fqdn'] is None):
+            raise ValueError("Missing the required parameter `fqdn` when calling `apis_fqdn_v1_resource_get`")
 
 
         collection_formats = {}
 
         path_params = {}
+        if 'resource' in params:
+            path_params['resource'] = params['resource']
+        if 'fqdn' in params:
+            path_params['fqdn'] = params['fqdn']
 
         query_params = {}
         if 'watch' in params:
@@ -228,14 +256,14 @@ class DefaultApi(object):
         # Authentication setting
         auth_settings = ['Bearer']
 
-        return self.api_client.call_api('/apis/git.k8s.com/v1/repos', 'GET',
+        return self.api_client.call_api('/apis/{fqdn}/v1/{resource}', 'GET',
                                         path_params,
                                         query_params,
                                         header_params,
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='Event',
+                                        response_type='object',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),

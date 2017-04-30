@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    kubeRepo
+    kubeResource
 
     Manage Third Party Resources from k8s
 
@@ -28,10 +28,10 @@ REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil"]
 setup(
     name=NAME,
     version=VERSION,
-    description="kubeRepo",
+    description="kubeResource",
     author_email="",
     url="",
-    keywords=["Swagger", "kubeRepo"],
+    keywords=["Swagger", "kubeResource"],
     install_requires=REQUIRES,
     packages=find_packages(),
     include_package_data=True,

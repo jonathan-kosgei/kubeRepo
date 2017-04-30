@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    kubeRepo
+    kubeResource
 
     Manage Third Party Resources from k8s
 
