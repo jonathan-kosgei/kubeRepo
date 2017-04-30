@@ -57,7 +57,6 @@ paths:
             $ref: "#/definitions/repo"
 definitions:
   event:
-    type: object
     properties:
       type:
         type: string
