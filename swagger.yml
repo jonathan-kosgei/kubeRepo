@@ -3,9 +3,10 @@ swagger: "2.0"
 info:
   version: 1.0.0
   title: kubeRepo
-  description: Manage Third Party Resources from k8s
-  author: Jonathan Kosgei
-
+  description: Manage Repos from k8s
+  contact:
+    name: Jonathan Kosgei
+    email: jonathan@saharacluster.com
 schemes:
   - https
 host: kubernetes.default.svc
