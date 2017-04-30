@@ -10,3 +10,6 @@ path: /path/in/volume
 image: image to run job in
 then: hugo --destination=/home/user/hugosite/public
 pvc: persistent-volume-claim
+username: repo username
+password: repo password
+# maybe have an auth block with optional auth params
