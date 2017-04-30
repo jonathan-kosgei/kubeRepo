@@ -20,39 +20,17 @@ paths:
         - Bearer: []
       summary: Gets Repos
       description: Returns a list of repos
-      produces:
-        - application/json
-        - application/yaml
-        - application/vnd.kubernetes.protobuf
-        - application/json;stream=watch
-        - application/vnd.kubernetes.protobuf;stream=watch
-      responses:
-        200:
-          description: A list of repos
-          schema:
-            $ref: "#/definitions/repos"
       parameters:
         - name: watch
           uniqueItems: true
+          required: true
           type: boolean
           description: Watch for changes to the described resources and return them as a stream
             of add, update, and remove notifications. Specify resourceVersion.
           in: query
-  /apis/git.k8s.com/v1/watch/repos:
-    get:
-      security:
-        - Bearer: []
-      summary: Watch Repos
-      description: Listen to events about repos
-      produces:
-        - application/json
-        - application/yaml
-        - application/vnd.kubernetes.protobuf
-        - application/json;stream=watch
-        - application/vnd.kubernetes.protobuf;stream=watch
       responses:
         200:
-          description: A stream of events
+          description: A list of repos
           schema:
             $ref: "#/definitions/event"
   /apis/git.k8s.com/v1/namespaces/{namespace}/repos/{name}:
@@ -84,12 +62,6 @@ definitions:
         type: string
       object:
         $ref: "#/definitions/repo"
-  repos:
-    properties:
-      items:
-        type: array
-        items:
-          $ref: "#/definitions/repo"
   repo:
     type: object
     properties:   
